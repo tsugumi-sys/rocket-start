@@ -65,6 +65,10 @@ npm create hono@latest backend
 npm create cloudflare@latest -- web --framework=remix --platform=pages
 ```
 
+### Step3. Initialize Drrizle ORM for cloudflare D1.
+
+
+
 ### Step 2. Add Authentication (Google OAuth)
 
 * Create `/auth/google/callback` route with Hono  
