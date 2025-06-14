@@ -70,6 +70,10 @@ export const login = new Hono<{ Bindings: Bindings }>().post("/", async (c) => {
     c.env.JWT_SECRET,
   );
 
+  c.header(
+    "Set-Cookie",
+    `token=${token}; HttpOnly; Secure; SameSite=Strict; Path=/`,
+  );
   return c.json({ token, refreshToken });
 });
 
