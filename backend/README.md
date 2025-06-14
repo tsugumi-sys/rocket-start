@@ -13,9 +13,11 @@ npm run deploy
 npm run cf-typegen
 ```
 
-Pass the `CloudflareBindings` as generics when instantiation `Hono`:
+## Setups
 
-```ts
-// src/index.ts
-const app = new Hono<{ Bindings: CloudflareBindings }>()
+Add envs in .dev.vars
+
+```sh
+JWT_SECRET=""
+GOOGLE_CLIENT_ID=""
 ```
