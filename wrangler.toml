@@ -1,0 +1,14 @@
+name = "rocket-backend"
+compatibility_date = "2023-05-18"
+main = "./backend/dist/index.js"
+
+[build]
+command = "npm --prefix backend run build"
+
+[env.dev]
+vars = { ENV = "dev" }
+
+[[d1_databases]]
+binding = "DB"
+database_name = "rocket-start"
+database_id = "00000000-0000-0000-0000-000000000000"

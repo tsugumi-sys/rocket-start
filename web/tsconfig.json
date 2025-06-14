@@ -1,0 +1,9 @@
+{
+  "extends": "@remix-run/tsconfig",
+  "compilerOptions": {
+    "jsx": "react-jsx",
+    "types": ["@cloudflare/workers-types"],
+    "baseUrl": "."
+  },
+  "include": ["app/**/*"]
+}
