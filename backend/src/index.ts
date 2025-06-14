@@ -1,5 +1,7 @@
 import { drizzle } from "drizzle-orm/d1";
 import { Hono } from "hono";
+import { cors } from "hono/cors";
+import { showRoutes } from "hono/dev";
 import auth from "./api/auth";
 import type { Bindings } from "./bindings";
 import { usersTable } from "./db/schema";
@@ -16,6 +18,17 @@ app.get("/users", async (c) => {
   return c.json(result);
 });
 
+app.use(
+  "/api/auth/*",
+  cors({
+    origin: "http://localhost:5173", // or use '*' for all (not safe for auth)
+    allowMethods: ["GET", "POST", "OPTIONS"],
+    allowHeaders: ["Content-Type", "Authorization"],
+    credentials: true,
+  }),
+);
 app.route("/api/auth", auth);
+
+showRoutes(app);
 
 export default app;

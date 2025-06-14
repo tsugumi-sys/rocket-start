@@ -9,6 +9,11 @@
   "pages_build_output_dir": "./build/client",
   "observability": {
     "enabled": true
+  },
+  // NOTE: Automatically loaded from .dev.vars
+  "vars": {
+    "GOOGLE_CLIENT_ID": "xx",
+    "BACKEND_SERVER_URL": "xx"
   }
   /**
    * Smart Placement
