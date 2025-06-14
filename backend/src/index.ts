@@ -1,6 +1,6 @@
-import { Hono } from 'hono'
-import { drizzle } from 'drizzle-orm/d1';
-import { usersTable } from './db/schema'
+import { drizzle } from "drizzle-orm/d1";
+import { Hono } from "hono";
+import { usersTable } from "./db/schema";
 
 type Bindings = {
   DB: D1Database;
@@ -8,9 +8,9 @@ type Bindings = {
 
 const app = new Hono<{ Bindings: Bindings }>();
 
-app.get('/', (c) => {
-  return c.text('Hello Hono!')
-})
+app.get("/", (c) => {
+  return c.text("Hello Hono!");
+});
 
 app.get("/users", async (c) => {
   const db = drizzle(c.env.DB);
@@ -18,4 +18,4 @@ app.get("/users", async (c) => {
   return c.json(result);
 });
 
-export default app
+export default app;
