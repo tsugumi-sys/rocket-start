@@ -10,7 +10,8 @@
   "dependencies": {
     "dotenv": "^16.5.0",
     "drizzle-orm": "^0.44.2",
-    "hono": "^4.7.11"
+    "hono": "^4.7.11",
+    "jose": "^5.2.0"
   },
   "devDependencies": {
     "drizzle-kit": "^0.31.1",
