@@ -5,7 +5,7 @@
   "prevId": "4a5cbd66-58ac-4b56-8f7a-2b1bb7d086d6",
   "tables": {
     "users_table": {
-      "name": "users_table",
+      "name": "users",
       "columns": {
         "id": {
           "name": "id",
