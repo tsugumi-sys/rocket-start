@@ -19,7 +19,7 @@ It leverages a **stateless and secure Cloudflare stack**, assuming Google/Apple 
 | ---------------- | ------------------------- |
 | Backend          | Hono (Cloudflare Workers) |
 | Frontend         | Remix (Cloudflare Pages)  |
-| Database         | Cloudflare D1 + Prisma    |
+| Database         | Cloudflare D1 + Drrizle   |
 | Storage          | Cloudflare R2             |
 | Authentication   | Google / Apple OAuth 2.0  |
 | Session Handling | JWT (Stateless) + Cookie  |
@@ -68,38 +68,23 @@ npm create cloudflare@latest -- web --framework=remix --platform=pages
 ### Step3. Initialize Drrizle ORM for cloudflare D1.
 
 
-
-### Step 2. Add Authentication (Google OAuth)
+### Step 4. Add Authentication (Google OAuth)
 
 * Create `/auth/google/callback` route with Hono  
 * Use `@hono/oauth-providers` to fetch the OAuth code  
 * On success, issue a JWT and return it with `Set-Cookie`  
 
-### Step 3. JWT Verification & Protected Routes
+### Step 5. JWT Verification & Protected Routes
 
 * In Hono middleware, read JWT from Cookie and verify the signature  
 * Set `c.set("user", payload)` to pass user info in the request  
 
-### Step 4. Retrieve Auth State in Remix
+### Step 6. Retrieve Auth State in Remix
 
 * In the loader, read the `Authorization` cookie and reflect login status  
 * Access API via `fetch('/api/protected', { credentials: 'include' })`  
 
-### Step 5. Set Up Prisma with Cloudflare D1
-
-* Install Prisma CLI and D1 adapter  
-* Define your schema in `prisma/schema.prisma`  
-* Configure your datasource using the `libsql`/`sqlite` provider  
-* Run:
-
-  ```sh
-  npx prisma generate
-  npx prisma db push
-  ```
-
-* Optionally, use `prisma migrate dev` if you simulate D1 locally with SQLite
-
-### Step 6. Codex Support (Optional)
+### Step 7. Codex Support (Optional)
 
 * Define `codex.json` for AI autocompletion and CLI support  
 * Set up unified local startup with `pnpm dev`  
