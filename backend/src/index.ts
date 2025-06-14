@@ -18,7 +18,15 @@ app.get("/users", async (c) => {
   return c.json(result);
 });
 
-app.use("/api/auth/*", cors());
+app.use(
+  "/api/auth/*",
+  cors({
+    origin: "http://localhost:5173", // or use '*' for all (not safe for auth)
+    allowMethods: ["GET", "POST", "OPTIONS"],
+    allowHeaders: ["Content-Type", "Authorization"],
+    credentials: true,
+  }),
+);
 app.route("/api/auth", auth);
 
 showRoutes(app);

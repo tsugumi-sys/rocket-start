@@ -10,8 +10,10 @@
   "observability": {
     "enabled": true
   },
+  // NOTE: Automatically loaded from .dev.vars
   "vars": {
-    "GOOGLE_CLIENT_ID": "change-me"
+    "GOOGLE_CLIENT_ID": "xx",
+    "BACKEND_SERVER_URL": "xx"
   }
   /**
    * Smart Placement
