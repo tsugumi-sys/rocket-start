@@ -51,9 +51,7 @@
       "foreignKeys": {
         "0": {
           "name": "",
-          "columns": [
-            "user_id"
-          ],
+          "columns": ["user_id"],
           "references": "users_table(id)"
         }
       },

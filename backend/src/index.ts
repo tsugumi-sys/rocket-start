@@ -1,8 +1,8 @@
 import { drizzle } from "drizzle-orm/d1";
 import { Hono } from "hono";
-import { usersTable } from "./db/schema";
 import auth from "./api/auth";
 import type { Bindings } from "./bindings";
+import { usersTable } from "./db/schema";
 
 const app = new Hono<{ Bindings: Bindings }>();
 
