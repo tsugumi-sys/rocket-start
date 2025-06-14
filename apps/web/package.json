@@ -1,0 +1,19 @@
+{
+  "name": "web",
+  "private": true,
+  "scripts": {
+    "dev": "remix dev",
+    "build": "remix build",
+    "start": "remix-serve build"
+  },
+  "dependencies": {
+    "@remix-run/cloudflare": "^2.10.0",
+    "@remix-run/react": "^2.10.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "@remix-run/dev": "^2.10.0",
+    "typescript": "^5.0.0"
+  }
+}
