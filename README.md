@@ -53,11 +53,17 @@ We completely separate Hono and Remix (do not use Hono Remix adaptor), so the fr
 
 ## ⚙️ Setup Steps (Initial Configuration)
 
-### Step 1. Initialize Project Structure
+### Step 1. Initialize Hono Backend
 
-* Use `create-remix` to scaffold a Remix app in `web` (for Cloudflare Pages)  
-* Set up Hono + TypeScript in `backend` (for Workers)  
-* Configure `wrangler.toml` with workspace settings and bindings  
+```sh
+npm create hono@latest backend
+```
+
+### Step 2. Initialize Remix frontend
+
+```sh
+npm create cloudflare@latest -- web --framework=remix --platform=pages
+```
 
 ### Step 2. Add Authentication (Google OAuth)
 
