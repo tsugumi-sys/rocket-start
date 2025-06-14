@@ -39,7 +39,7 @@ We completely separate Hono and Remix (do not use Hono Remix adaptor), so the fr
 * Cookie is sent with the following attributes:  
   * `HttpOnly`  
   * `Secure`  
-  * `SameSite=Lax`  
+  * `SameSite=Strict`  
 
 ---
 
