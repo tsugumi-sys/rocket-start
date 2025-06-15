@@ -1,7 +1,29 @@
+## Setups
+
+Add envs in .dev.vars
+
+```sh
+JWT_SECRET=""
+GOOGLE_CLIENT_ID=""
+FRONTEND_ORIGIN=""
+```
+
+## Development
+
 ```txt
 npm install
 npm run dev
 ```
+
+## Deployment
+
+Add envs in .production.vars:
+
+```sh
+touch .production.vars
+```
+
+Then deploy:
 
 ```txt
 npm run deploy
@@ -13,12 +35,3 @@ npm run deploy
 npm run cf-typegen
 ```
 
-## Setups
-
-Add envs in .dev.vars
-
-```sh
-JWT_SECRET=""
-GOOGLE_CLIENT_ID=""
-FRONTEND_ORIGIN="http://localhost:5173"
-```

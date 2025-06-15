@@ -5,14 +5,13 @@ import { sign } from "hono/jwt";
 import { createRemoteJWKSet, jwtVerify } from "jose";
 import type { Bindings } from "../../../bindings";
 import { userAccountsTable, usersTable } from "../../../db/schema";
-import type { GoogleIdTokenPayload } from "./model";
 import { ACCESS_TOKEN_EXP, REFRESH_TOKEN_EXP } from "../constants";
+import type { GoogleIdTokenPayload } from "./model";
 
 const GOOGLE_ISSUER = "https://accounts.google.com";
 const GOOGLE_JWKS = createRemoteJWKSet(
   new URL("https://www.googleapis.com/oauth2/v3/certs"),
 );
-
 
 export const login = new Hono<{ Bindings: Bindings }>().post("/", async (c) => {
   const body = await c.req.json<{ id_token?: string }>();

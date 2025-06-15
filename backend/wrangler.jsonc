@@ -7,9 +7,9 @@
   //   "nodejs_compat"
   // ],
   "vars": {
-    "JWT_SECRET": "dev-secret",
-    "GOOGLE_CLIENT_ID": "change-me",
-    "FRONTEND_ORIGIN": "http://localhost:5173"
+    "JWT_SECRET": "please-set-vars-file",
+    "GOOGLE_CLIENT_ID": "please-set-vars-file",
+    "FRONTEND_ORIGIN": "please-set-vars-file"
   },
   // "kv_namespaces": [
   //   {
@@ -26,8 +26,8 @@
   "d1_databases": [
     {
       "binding": "DB",
-      "database_name": "rocket_start_tutorial",
-      "database_id": "a4c496a2-2611-4fcc-be12-5e1ff2f1fbab",
+      "database_name": "your_db",
+      "database_id": "your_db_id",
       "migrations_dir": "drizzle"
     }
   ]

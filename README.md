@@ -20,7 +20,8 @@ It leverages a **stateless and secure Cloudflare stack**, assuming Google/Apple 
 | Backend          | Hono (Cloudflare Workers) |
 | Frontend         | Remix (Cloudflare Pages)  |
 | Database         | Cloudflare D1 + Drrizle   |
-| Storage          | Cloudflare R2             |
+| Blog Storage     | Cloudflare R2             |
+| Key-Value Store  | Cloudflare KV             |
 | Authentication   | Google / Apple OAuth 2.0  |
 | Session Handling | JWT (Stateless) + Cookie  |
 
@@ -44,55 +45,9 @@ We completely separate Hono and Remix (do not use Hono Remix adaptor), so the fr
 
 ---
 
-## ✅ Delivery Format
-
-* GitHub template + SDK distributed via npm  
-* Compatible with Codex template (`codex.json` definition)  
-* Future plan: SaaS GUI management panel  
-
----
-
 ## ⚙️ Setup Steps (Initial Configuration)
 
-### Step 1. Initialize Hono Backend
+1. Create Cloudflare D1, and change wrangler configuration in backend.
+2. Setup backend (see `backend/README.md`)
+3. Setup web (see `web/README.md`)
 
-```sh
-npm create hono@latest backend
-```
-
-### Step 2. Initialize Remix frontend
-
-```sh
-npm create cloudflare@latest -- web --framework=remix --platform=pages
-```
-
-### Step3. Initialize Drrizle ORM for cloudflare D1.
-
-
-### Step 4. Add Authentication (Google OAuth)
-
-* Create `/auth/google/callback` route with Hono  
-* Use `@hono/oauth-providers` to fetch the OAuth code  
-* On success, issue a JWT and return it with `Set-Cookie`  
-
-### Step 5. JWT Verification & Protected Routes
-
-* In Hono middleware, read JWT from Cookie and verify the signature  
-* Set `c.set("user", payload)` to pass user info in the request  
-
-### Step 6. Retrieve Auth State in Remix
-
-* In the loader, read the `Authorization` cookie and reflect login status  
-* Access API via `fetch('/api/protected', { credentials: 'include' })`  
-
-### Step 7. Codex Support (Optional)
-
-* Define `codex.json` for AI autocompletion and CLI support  
-* Set up unified local startup with `pnpm dev`  
-
----
-
-## 📝 License & OSS Policy
-
-* Plan to adopt MIT or Apache-2.0  
-* Will be structured to welcome community contributions
