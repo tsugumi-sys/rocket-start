@@ -2,6 +2,9 @@ import { Hono } from "hono";
 import { sign, verify } from "hono/jwt";
 import type { Bindings } from "../../../bindings";
 
+const ACCESS_TOKEN_EXP = 60 * 60; // 1 hour
+const REFRESH_TOKEN_EXP = 60 * 60 * 24 * 30; // 30 days
+
 export const refresh = new Hono<{ Bindings: Bindings }>().post(
   "/",
   async (c) => {
@@ -21,9 +24,13 @@ export const refresh = new Hono<{ Bindings: Bindings }>().post(
     if (payload.typ !== "refresh") {
       return c.json({ error: "invalid token" }, 400);
     }
-    const newToken = await sign({ sub: payload.sub }, c.env.JWT_SECRET);
+    const now = Math.floor(Date.now() / 1000);
+    const newToken = await sign(
+      { sub: payload.sub, exp: now + ACCESS_TOKEN_EXP },
+      c.env.JWT_SECRET,
+    );
     const newRefresh = await sign(
-      { sub: payload.sub, typ: "refresh" },
+      { sub: payload.sub, typ: "refresh", exp: now + REFRESH_TOKEN_EXP },
       c.env.JWT_SECRET,
     );
     return c.json({ token: newToken, refreshToken: newRefresh });
