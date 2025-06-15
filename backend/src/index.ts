@@ -21,7 +21,7 @@ app.get("/users", async (c) => {
 app.use(
   "/api/auth/*",
   cors({
-    origin: "http://localhost:5173", // or use '*' for all (not safe for auth)
+    origin: (_origin, c) => c.env.FRONTEND_ORIGIN,
     allowMethods: ["GET", "POST", "OPTIONS"],
     allowHeaders: ["Content-Type", "Authorization"],
     credentials: true,

@@ -6,11 +6,13 @@ import { createRemoteJWKSet, jwtVerify } from "jose";
 import type { Bindings } from "../../../bindings";
 import { userAccountsTable, usersTable } from "../../../db/schema";
 import type { GoogleIdTokenPayload } from "./model";
+import { ACCESS_TOKEN_EXP, REFRESH_TOKEN_EXP } from "../constants";
 
 const GOOGLE_ISSUER = "https://accounts.google.com";
 const GOOGLE_JWKS = createRemoteJWKSet(
   new URL("https://www.googleapis.com/oauth2/v3/certs"),
 );
+
 
 export const login = new Hono<{ Bindings: Bindings }>().post("/", async (c) => {
   const body = await c.req.json<{ id_token?: string }>();
@@ -76,17 +78,21 @@ export const login = new Hono<{ Bindings: Bindings }>().post("/", async (c) => {
       .run();
   }
 
-  // Create JWT tokens
-  const token = await sign({ sub: String(userId) }, c.env.JWT_SECRET);
+  // Create JWT tokens with expirations
+  const now = Math.floor(Date.now() / 1000);
+  const token = await sign(
+    { sub: String(userId), exp: now + ACCESS_TOKEN_EXP },
+    c.env.JWT_SECRET,
+  );
   const refreshToken = await sign(
-    { sub: String(userId), typ: "refresh" },
+    { sub: String(userId), typ: "refresh", exp: now + REFRESH_TOKEN_EXP },
     c.env.JWT_SECRET,
   );
 
   // Set HttpOnly cookie
   c.header(
     "Set-Cookie",
-    `token=${token}; HttpOnly; Secure; SameSite=Strict; Path=/`,
+    `token=${token}; HttpOnly; Secure; SameSite=Strict; Path=/; Max-Age=${ACCESS_TOKEN_EXP}`,
   );
 
   return c.json({ token, refreshToken });

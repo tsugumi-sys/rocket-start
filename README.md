@@ -32,14 +32,15 @@ We completely separate Hono and Remix (do not use Hono Remix adaptor), so the fr
 
 * Only supports Google / Apple OAuth (no username/password)  
 * After authentication, Hono issues a JWT and returns it as an `HttpOnly` cookie  
-* JWT contains:  
-  * `sub`: User ID (e.g., Google/Apple ID)  
-  * `exp`, `iat`: Expiration and issue time  
-  * `iss`: Issuer  
-* Cookie is sent with the following attributes:  
-  * `HttpOnly`  
-  * `Secure`  
-  * `SameSite=Strict`  
+* JWT contains:
+  * `sub`: User ID (e.g., Google/Apple ID)
+  * `exp`, `iat`: Expiration and issue time
+  * `iss`: Issuer
+* Access tokens expire after **1 hour** and refresh tokens after **30 days**
+* Cookie is sent with the following attributes:
+  * `HttpOnly`
+  * `Secure`
+  * `SameSite=Strict`
 
 ---
 

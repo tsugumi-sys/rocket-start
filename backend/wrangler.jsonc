@@ -8,7 +8,8 @@
   // ],
   "vars": {
     "JWT_SECRET": "dev-secret",
-    "GOOGLE_CLIENT_ID": "change-me"
+    "GOOGLE_CLIENT_ID": "change-me",
+    "FRONTEND_ORIGIN": "http://localhost:5173"
   },
   // "kv_namespaces": [
   //   {

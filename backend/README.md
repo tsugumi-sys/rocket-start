@@ -20,4 +20,5 @@ Add envs in .dev.vars
 ```sh
 JWT_SECRET=""
 GOOGLE_CLIENT_ID=""
+FRONTEND_ORIGIN="http://localhost:5173"
 ```
