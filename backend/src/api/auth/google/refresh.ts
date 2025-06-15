@@ -1,9 +1,7 @@
 import { Hono } from "hono";
 import { sign, verify } from "hono/jwt";
 import type { Bindings } from "../../../bindings";
-
-const ACCESS_TOKEN_EXP = 60 * 60; // 1 hour
-const REFRESH_TOKEN_EXP = 60 * 60 * 24 * 30; // 30 days
+import { ACCESS_TOKEN_EXP, REFRESH_TOKEN_EXP } from "../constants";
 
 export const refresh = new Hono<{ Bindings: Bindings }>().post(
   "/",
