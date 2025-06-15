@@ -1,7 +1,12 @@
-# Welcome to Remix + Cloudflare!
+## Setups
 
-- 📖 [Remix docs](https://remix.run/docs)
-- 📖 [Remix Cloudflare docs](https://remix.run/guides/vite#cloudflare)
+Add envs in .dev.vars
+
+```sh
+GOOGLE_CLIENT_ID=""
+BACKEND_SERVER_URL=""
+```
+
 
 ## Development
 
@@ -29,6 +34,12 @@ npm run typegen
 You will need to rerun typegen whenever you make changes to `wrangler.toml`.
 
 ## Deployment
+
+Add envs in .production.vars:
+
+```sh
+touch .production.vars
+```
 
 First, build your app for production:
 

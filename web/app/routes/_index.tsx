@@ -1,4 +1,4 @@
-import { json, type LoaderFunctionArgs } from "@remix-run/cloudflare";
+import { type LoaderFunctionArgs, json } from "@remix-run/cloudflare";
 import { useLoaderData, useRouteLoaderData } from "@remix-run/react";
 import { useEffect, useRef } from "react";
 import type { loader as rootLoader } from "../root";
